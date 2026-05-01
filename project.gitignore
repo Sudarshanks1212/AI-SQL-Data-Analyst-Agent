@@ -1,0 +1,8 @@
+# API Keys and Secrets
+key.env
+.env
+secrets.toml
+
+# Python cache
+__pycache__/
+*.pyc
