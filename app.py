@@ -1,8 +1,5 @@
-# ==========================================
-# AI SQL DATA ANALYST AGENT (PRO VERSION)
-# ==========================================
-
-import streamlit as st
+ # AI SQL DATA ANALYST AGENT (PRO VERSION)
+ import streamlit as st
 import pandas as pd
 import sqlite3
 import plotly.express as px
@@ -17,9 +14,7 @@ from langchain_community.utilities import SQLDatabase
 from langchain_community.agent_toolkits import create_sql_agent
 from langchain_groq import ChatGroq
 
-# ------------------------------------------
 # PAGE CONFIG & STYLING
-# ------------------------------------------
 st.set_page_config(page_title="AI SQL Analyst", page_icon="🚀", layout="wide")
 
 # Custom CSS for better padding and UI tweaks
@@ -31,9 +26,8 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# ------------------------------------------
+ 
 # HELPER FUNCTIONS
-# ------------------------------------------
 def clean_sql_query(raw_sql: str) -> str:
     """Removes markdown formatting from LLM SQL output securely."""
     cleaned = raw_sql.replace("```sql", "")
@@ -46,9 +40,8 @@ def convert_df_to_csv(dataframe):
     """Converts dataframe to CSV for downloading."""
     return dataframe.to_csv(index=False).encode('utf-8')
 
-# ------------------------------------------
+ 
 # SIDEBAR: CONFIGURATION & UPLOAD
-# ------------------------------------------
 with st.sidebar:
     st.header("⚙️ Setup & Configuration")
     
@@ -74,9 +67,8 @@ with st.sidebar:
         schema_df = pd.DataFrame(df_preview.dtypes, columns=['Data Type']).astype(str)
         st.dataframe(schema_df, use_container_width=True)
 
-# ------------------------------------------
+
 # MAIN APP LOGIC
-# ------------------------------------------
 st.title("🚀 AI SQL Data Analyst Agent")
 st.markdown("Interact with your CSV data naturally. Ask questions, get insights, and generate charts!")
 
@@ -112,9 +104,9 @@ else:
     # 3. UI Layout (Tabs)
     tab_chat, tab_data, tab_about = st.tabs(["💬 Chat & Visualization", "🗄️ Raw Data & Statistics", "ℹ️ About the App"])
 
-    # ------------------------------------------
+ 
     # TAB: ABOUT THE APP
-    # ------------------------------------------
+ 
     with tab_about:
         st.markdown("### 🧠 About this AI Agent")
         st.write("Welcome to the **AI SQL Data Analyst**, a powerful tool designed to democratize data analysis. "
@@ -141,9 +133,9 @@ else:
         st.divider()
         st.info("Built with ❤️ using Streamlit, Pandas, LangChain, Plotly, and Groq.")
 
-    # ------------------------------------------
+  
     # TAB: RAW DATA & STATS
-    # ------------------------------------------
+    
     with tab_data:
         st.subheader("📊 Dataset Preview")
         st.dataframe(df.head(15), use_container_width=True)
@@ -160,9 +152,9 @@ else:
             st.subheader("📈 Statistical Summary (Numerical Data)")
             st.dataframe(df.describe(), use_container_width=True)
 
-    # ------------------------------------------
+ 
     # TAB: CHAT & VISUALIZATION
-    # ------------------------------------------
+     
     with tab_chat:
         
         with st.form("chat_form"):
