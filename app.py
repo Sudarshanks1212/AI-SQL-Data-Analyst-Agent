@@ -1,5 +1,5 @@
  # AI SQL DATA ANALYST AGENT (PRO VERSION)
- import streamlit as st
+import streamlit as st
 import pandas as pd
 import sqlite3
 import plotly.express as px
